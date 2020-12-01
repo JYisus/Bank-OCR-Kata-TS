@@ -68,3 +68,19 @@ export function extractNumberInPosition(codifiedNumber: string, numberPosition: 
 
     return secondNumber
 }
+
+export function parseNumbers(codifiedNumbers: string): string {
+    
+    const codifiedNumbersLength = codifiedNumbers.length - 3
+    const amountOfNumbers = codifiedNumbersLength/9
+
+    console.log(codifiedNumbers.length)
+    console.log(amountOfNumbers)
+
+    let number = ""
+    for (let i = 0; i<amountOfNumbers; i++) {
+        number += parseIndividualNumber(extractNumberInPosition(codifiedNumbers,i))
+    }
+
+    return number
+}
