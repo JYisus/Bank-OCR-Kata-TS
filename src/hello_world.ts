@@ -52,6 +52,19 @@ const numbersRepresentation = new Map([
     
 ])
 
-export function parseIndividualNumber(stringNumber: string): string {
-    return numbersRepresentation.get(stringNumber) || "?"
+export function parseIndividualNumber(codifiedNumber: string): string {
+    return numbersRepresentation.get(codifiedNumber) || "?"
+}
+
+export function extractNumberInPosition(codifiedNumber: string, numberPosition: number): string {
+    const codifiedNumberFiles = codifiedNumber.split("\n")
+
+    const firstIndex = 3 * numberPosition
+    const lastIndex = firstIndex+3
+    // console.log(codifiedNumberFiles)
+    const secondNumber = codifiedNumberFiles[0].substring(firstIndex,lastIndex)+ "\n" +
+                        codifiedNumberFiles[1].substring(firstIndex,lastIndex)+ "\n" +
+                        codifiedNumberFiles[2].substring(firstIndex,lastIndex)+ "\n" 
+
+    return secondNumber
 }

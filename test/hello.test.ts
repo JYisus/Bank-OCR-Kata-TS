@@ -1,4 +1,4 @@
-import { parseIndividualNumber } from "../src/hello_world";
+import { parseIndividualNumber, extractNumberInPosition } from "../src/hello_world";
 
 const numberOne = "   \n" +
                           "  |\n" +
@@ -52,4 +52,22 @@ describe("Bank OCR", ()=>{
         expect(parseIndividualNumber(numberNine)).toBe("9");
         expect(parseIndividualNumber(numberZero)).toBe("0");
     })
+
+    it("extract the first number of a set of codified numbers", () => {
+        const numberTen =   "    _ \n" +
+                            "  || |\n" +
+                            "  ||_|\n" 
+
+        expect(extractNumberInPosition(numberTen,0)).toBe(numberOne)
+    })
+
+    it("extract the second number of a set of codified numbers", () => {
+        const numberTen =   "    _ \n" +
+                            "  || |\n" +
+                            "  ||_|\n" 
+
+        expect(extractNumberInPosition(numberTen, 1)).toBe(numberZero)
+    })
+
+
 })
