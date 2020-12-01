@@ -61,7 +61,7 @@ export function extractNumberInPosition(codifiedNumber: string, numberPosition: 
 
     const firstIndex = 3 * numberPosition
     const lastIndex = firstIndex+3
-    // console.log(codifiedNumberFiles)
+
     const secondNumber = codifiedNumberFiles[0].substring(firstIndex,lastIndex)+ "\n" +
                         codifiedNumberFiles[1].substring(firstIndex,lastIndex)+ "\n" +
                         codifiedNumberFiles[2].substring(firstIndex,lastIndex)+ "\n" 
@@ -73,9 +73,6 @@ export function parseNumbers(codifiedNumbers: string): string {
     
     const codifiedNumbersLength = codifiedNumbers.length - 3
     const amountOfNumbers = codifiedNumbersLength/9
-
-    console.log(codifiedNumbers.length)
-    console.log(amountOfNumbers)
 
     let number = ""
     for (let i = 0; i<amountOfNumbers; i++) {

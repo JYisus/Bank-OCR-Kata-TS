@@ -39,6 +39,9 @@ const numberOne = "   \n" +
         const numberZero =  " _ \n" +
                             "| |\n" +
                             "|_|\n" 
+        const notANumber =  " _ \n" +
+                            " _|\n" +
+                            "|_|\n" 
 describe("Bank OCR", ()=>{
     it("parses a number from card format to string", () => {
         expect(parseIndividualNumber(numberOne)).toBe("1");
@@ -51,6 +54,7 @@ describe("Bank OCR", ()=>{
         expect(parseIndividualNumber(numberEight)).toBe("8");
         expect(parseIndividualNumber(numberNine)).toBe("9");
         expect(parseIndividualNumber(numberZero)).toBe("0");
+        expect(parseIndividualNumber(notANumber)).toBe("?");
     })
 
     it("extract the first number of a set of codified numbers", () => {
@@ -77,7 +81,7 @@ describe("Bank OCR", ()=>{
         expect(parseNumbers(numberTen)).toBe("10")
     })
 
-    it("parses a set of numbers of a pair of codified numbers", () => {
+    it("parses a set of numbers of a set of codified numbers", () => {
         const numberOneHundrerThree =   "    _  _ \n" +
                                         "  || | _|\n" +
                                         "  ||_| _|\n" 
@@ -85,6 +89,11 @@ describe("Bank OCR", ()=>{
         expect(parseNumbers(numberOneHundrerThree)).toBe("103")
     })
 
+    it("parses a bigger set of numbers of a set of codified numbers", () => {
+        const cardNumber =  " _  _  _  _  _  _  _  _  _ \n" +
+                            "| || || || || || || || || |\n" +
+                            "|_||_||_||_||_||_||_||_||_|\n" 
 
-
+        expect(parseNumbers(cardNumber)).toBe("000000000")
+    })
 })
